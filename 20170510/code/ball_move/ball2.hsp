@@ -1,0 +1,163 @@
+;
+;ボールを跳ね返るプログラム(配列なしver)
+;
+
+;配列作るゾーン
+ dim ballX,3  ;ボールのX座標
+ dim ballY,3  ;ボールのY座標
+ dim ballDX,3 ;ボールのX方向における加算値
+ dim ballDY,3 ;ボールのY方向における加算値
+
+
+
+;setup(初期値)
+
+ wid=300;スクリーンの横幅
+ height=400;スクリーンの縦幅
+
+
+ ballR=9;ボールの半径
+
+ repeat 3
+
+  ballX(cnt)=ballR+rnd(wid-ballR)
+  ballY(cnt)=ballR+rnd(height-ballR)
+  
+  ballDX(cnt)=5
+  ballDY(cnt)=5
+
+ loop
+
+
+ ;スクリーン
+ screen 0,wid,height;
+ 
+;setup終わり
+
+
+;draw(アニメーションするところ)
+
+*draw
+	redraw 0
+	
+;background(背景)
+	color 0,0,0
+	boxf 0,0,wid,height
+	
+
+;ボール
+	
+ ;1個目
+	
+	;X方向の移動
+	
+	ballX(0)+=ballDX(0)
+	
+	if(ballX(0)-ballR<0){
+		
+		ballDX(0)=-ballDX(0)
+		
+	}
+	
+	if(ballX(0)+ballR>wid){
+		
+		ballDX(0)=-ballDX(0)
+		
+	}
+	
+	;Y方向の移動
+	ballY(0)+=ballDY(0)
+	
+	if(ballY(0)-ballR<0){
+		
+		ballDY(0)=-ballDY(0)
+		
+	}
+	
+	if(ballY(0)+ballR>height){
+		
+		ballDY(0)=-ballDY(0)
+		
+	}
+     
+	;ボールを描画
+	color 255,255,255
+	circle ballX(0)-ballR,ballY(0)-ballR,ballX(0)+ballR,ballY(0)+ballR
+	
+ ;2個目
+	
+	;X方向の移動
+	
+	ballX(1)+=ballDX(1)
+	
+	if(ballX(1)-ballR<0){
+		
+		ballDX(1)=-ballDX(1)
+		
+	}
+	
+	if(ballX(1)+ballR>wid){
+		
+		ballDX(1)=-ballDX(1)
+		
+	}
+	
+	;Y方向の移動
+	ballY(1)+=ballDY(1)
+	
+	if(ballY(1)-ballR<0){
+		
+		ballDY(1)=-ballDY(1)
+		
+	}
+	
+	if(ballY(1)+ballR>height){
+		
+		ballDY(1)=-ballDY(1)
+		
+	}
+     
+	;ボールを描画
+	color 255,255,255
+	circle ballX(1)-ballR,ballY(1)-ballR,ballX(1)+ballR,ballY(1)+ballR
+	
+ ;3個目
+	
+	;X方向の移動
+	
+	ballX(2)+=ballDX(2)
+	
+	if(ballX(2)-ballR<0){
+		
+		ballDX(2)=-ballDX(2)
+		
+	}
+	
+	if(ballX(2)+ballR>wid){
+		
+		ballDX(2)=-ballDX(2)
+		
+	}
+	
+	;Y方向の移動
+	ballY(2)+=ballDY(2)
+	
+	if(ballY(2)-ballR<0){
+		
+		ballDY(2)=-ballDY(2)
+		
+	}
+	
+	if(ballY(2)+ballR>height){
+		
+		ballDY(2)=-ballDY(2)
+		
+	}
+     
+	;ボールを描画
+	color 255,255,255
+	circle ballX(2)-ballR,ballY(2)-ballR,ballX(2)+ballR,ballY(2)+ballR
+	
+	redraw 1
+	await 16
+goto *draw

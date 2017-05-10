@@ -1,0 +1,84 @@
+;
+;円の中をクリックすると色が変わるよ(二重配列ver)
+;
+
+dim flag,5,5
+
+wid=600
+height=600
+
+circleR=60
+
+repeat 5
+ cnt1=cnt
+ repeat 5
+ cnt2=cnt
+   flag(cnt1,cnt2)=0 ;フラグ
+ loop
+
+loop
+
+screen 0,wid,height
+
+*draw
+	redraw 0
+	
+;background
+	color 255,255,255
+	boxf 0,0,wid,height
+	
+;円を表示	
+	
+repeat 5
+cnt1=cnt
+ repeat 5
+ 
+ cnt2=cnt
+ 
+	if(flag(cnt1,cnt2)=0){
+	color 255,0,0
+	}
+	
+	if(flag(cnt1,cnt2)=1){
+	color 0,255,0
+	}
+	
+	if(flag(cnt1,cnt2)>=2){
+	color 0,0,255
+	}
+	
+	
+	circle 60+120*(cnt1)-circleR,60+120*(cnt2)-circleR,60+120*(cnt1)+circleR,60+120*(cnt2)+circleR
+ 
+ loop
+
+loop
+
+	onclick *mousePressed;ボタンを押したとき
+	
+	
+	redraw 1
+	await 16
+goto *draw
+
+
+;ボタンを押したときの動作
+
+*mousePressed
+	
+ repeat 5
+  cnt1=cnt
+  repeat 5
+   cnt2=cnt
+	//マウスが円の中にあるとき
+  if(abs(60+120*(cnt1)-mouseX)<circleR AND abs(60+120*(cnt2)-mouseY)<circleR){
+	 
+   flag(cnt1,cnt2)++
+  
+  }
+  
+  loop
+  
+ loop
+	
+goto *draw

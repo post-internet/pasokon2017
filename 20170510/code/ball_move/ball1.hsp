@@ -1,0 +1,82 @@
+
+;
+;ボールを跳ね返るプログラム
+;
+
+
+;setup(初期値)
+
+ wid=300;スクリーンの横幅
+ height=400;スクリーンの縦幅
+
+
+ ballR=9;ボールの半径
+
+ 
+
+  ballX=ballR+rnd(wid-ballR)   ;ボールのX座標
+  ballY=ballR+rnd(height-ballR);ボールのY座標
+  ballDX=5                     ;ボールのX方向における加算値
+  ballDY=5                     ;ボールのY方向における加算値
+
+
+
+ ;スクリーン
+ screen 0,wid,height
+ 
+;setup終わり
+
+
+;draw(アニメーションするところ)
+
+*draw
+	redraw 0
+	
+;background(背景)
+	color 0,0,0
+	boxf 0,0,wid,height
+	
+
+;ボール
+	
+	
+	;X方向の移動
+	
+	ballX+=ballDX
+	
+	if(ballX-ballR<0){
+		
+		ballDX=-ballDX
+		
+	}
+	
+	if(ballX+ballR>wid){
+		
+		ballDX=-ballDX
+		
+	}
+	
+	;Y方向の移動
+	ballY+=ballDY
+	
+	if(ballY-ballR<0){
+		
+		ballDY=-ballDY
+		
+	}
+	
+	if(ballY+ballR>height){
+		
+		ballDY=-ballDY
+		
+	}
+     
+	;ボールを描画
+	color 255,255,255
+	circle ballX-ballR,ballY-ballR,ballX+ballR,ballY+ballR
+	
+ 
+	
+	redraw 1
+	await 16
+goto *draw

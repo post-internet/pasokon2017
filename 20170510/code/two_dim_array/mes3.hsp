@@ -1,0 +1,19 @@
+dim tana,2,2
+
+tana(0,0)=0
+tana(0,1)=1
+tana(1,0)=2
+tana(1,1)=3
+
+;repeat二つで繰り返す
+
+repeat 2 
+ cnt1=cnt;外側のrepeatの回数-1
+ repeat 2
+ cnt2=cnt;外側のrepeatの回数-1
+ 
+ mes(tana(cnt1,cnt2)) ;cnt1番の中のcnt2番の配列の値を表示
+        
+ loop
+ 
+loop

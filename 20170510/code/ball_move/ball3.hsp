@@ -1,0 +1,91 @@
+;
+;ボールを跳ね返るプログラム(配列ver)
+;
+
+;配列作るゾーン
+ dim ballX,3  ;ボールのX座標
+ dim ballY,3  ;ボールのY座標
+ dim ballDX,3 ;ボールのX方向における加算値
+ dim ballDY,3 ;ボールのY方向における加算値
+
+
+
+;setup(初期値)
+
+ wid=300;スクリーンの横幅
+ height=400;スクリーンの縦幅
+
+
+ ballR=9;ボールの半径
+
+ repeat 3
+
+  ballX(cnt)=ballR+rnd(wid-ballR)
+  ballY(cnt)=ballR+rnd(height-ballR)
+  
+  ballDX(cnt)=5
+  ballDY(cnt)=5
+
+ loop
+
+
+ ;スクリーン
+ screen 0,wid,height;
+ 
+;setup終わり
+
+
+;draw(アニメーションするところ)
+
+*draw
+	redraw 0
+	
+;background(背景)
+	color 0,0,0
+	boxf 0,0,wid,height
+	
+
+;ボール
+	
+ repeat 3
+	
+	;X方向の移動
+	
+	ballX(cnt)+=ballDX(cnt)
+	
+	if(ballX(cnt)-ballR<0){
+		
+		ballDX(cnt)=-ballDX(cnt)
+		
+	}
+	
+	if(ballX(cnt)+ballR>wid){
+		
+		ballDX(cnt)=-ballDX(cnt)
+		
+	}
+	
+	;Y方向の移動
+	ballY(cnt)+=ballDY(cnt)
+	
+	if(ballY(cnt)-ballR<0){
+		
+		ballDY(cnt)=-ballDY(cnt)
+		
+	}
+	
+	if(ballY(cnt)+ballR>height){
+		
+		ballDY(cnt)=-ballDY(cnt)
+		
+	}
+     
+	;ボールを描画
+	color 255,255,255
+	circle ballX(cnt)-ballR,ballY(cnt)-ballR,ballX(cnt)+ballR,ballY(cnt)+ballR
+	
+ loop
+	
+	redraw 1
+	await 16
+goto *draw

@@ -1,0 +1,16 @@
+dim tana,4 ;dim「配列の名前,「配列の個数」
+
+tana(0)=11 ;
+tana(1)=4  ;それぞれの配列に中身を入れる
+tana(2)=5  ;
+tana(3)=14 ; 
+
+;repeatで繰り返す
+
+repeat 4 ;「4」は繰り返す回数（書かないと無限ループ！）
+
+ mes(tana(cnt)) ;cnt番の配列の値を表示
+                ;cnt=「repeatが実行された数」-1
+                ;3回目なら cnt=2
+
+loop

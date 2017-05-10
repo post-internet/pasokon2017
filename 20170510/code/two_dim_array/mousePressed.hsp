@@ -1,0 +1,51 @@
+;
+;クリックすると背景の色が変わるよ
+;
+
+wid=600
+height=120
+
+
+flag=0 ;フラグ
+
+screen 0,wid,height
+
+;draw
+
+*draw
+	redraw 0
+	
+	
+	if(flag=0){
+	color 255,0,0
+	}
+	
+	if(flag=1){
+	color 0,255,0
+	}
+	
+	if(flag>=2){
+	color 0,0,255
+	}
+	
+	
+	boxf 0,0,wid,height
+	
+	onclick *mousePressed;ボタンを押したとき
+	
+	
+	redraw 1
+	await 16
+goto *draw
+
+
+;mousePressed
+
+*mousePressed
+	
+	//マウスが円の中にあるとき
+  
+  flag++
+  
+	
+goto *draw
