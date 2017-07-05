@@ -2,6 +2,6 @@
 
 ## Unity講座
 
-講師 : [@fms_sabu](https://twitter.com/fms_sabu)
+![](https://upload.wikimedia.org/wikipedia/commons/8/8a/Official_unity_logo.png)
 
-![](lecture_Unity.pdf)
+講師 : [@fms_sabu](https://twitter.com/fms_sabu)
